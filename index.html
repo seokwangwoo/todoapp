@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <title>Momentum</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="w3-container w3-teal w3-black w3-large">
+      <span id="clock" class="w3-bar-item">00:00:00</span>
+      <div id="weather" class="w3-bar-item w3-right">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="login">
+      <form id="login-form" class="hidden w3-panel w3-card-4">
+        <h2>Login</h2>
+        <p>
+          <input
+            required
+            maxlength="15"
+            type="text"
+            placeholder="What is your name?"
+            class="w3-input"
+          />
+        </p>
+        <p>
+          <button class="w3-button w3-black">Log In</button>
+        </p>
+      </form>
+      <p id="greeting" class="hidden w3-center w3-xxlarge">Logged In!</p>
+    </div>
+    <form id="todo-form" class="w3-container">
+      <input
+        type="text"
+        placeholder="Write a Todo and Press Enter"
+        name=""
+        id=""
+        class="w3-input"
+      />
+    </form>
+    <div id="todo-list" class="w3-container">
+      <h2>Todo List</h2>
+    </div>
+    <div id="quote">
+      <span></span>
+      <span></span>
+    </div>
+    <script src="./js/greetings.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="./js/quotes.js"></script>
+    <script src="./js/background.js"></script>
+    <script src="./js/weather.js"></script>
+  </body>
+</html>
