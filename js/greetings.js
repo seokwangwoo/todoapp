@@ -4,8 +4,9 @@ const TODOS_KEY = "todos";
 
 class LoginForm {
   constructor() {
-    this.form = document.querySelector("#login-form");
-    this.input = this.form.querySelector("input");
+    this.loginForm = document.querySelector("#login-form");
+    this.logoutForm = document.querySelector("#logout-form");
+    this.input = this.loginForm.querySelector("input");
     this.greeting = document.querySelector("#greeting");
     this.username = "";
   }
@@ -16,12 +17,18 @@ class LoginForm {
     this.paintGreetings(this.username);
   }
 
+  deleteUsername() {
+    localStorage.removeItem(USERNAME_KEY);
+  }
+
   hideForm() {
-    this.form.classList.add(HIDDEN_CLASSNAME);
+    this.loginForm.classList.add(HIDDEN_CLASSNAME);
+    this.logoutForm.classList.remove(HIDDEN_CLASSNAME);
   }
 
   showForm() {
-    this.form.classList.remove(HIDDEN_CLASSNAME);
+    this.loginForm.classList.remove(HIDDEN_CLASSNAME);
+    this.logoutForm.classList.add(HIDDEN_CLASSNAME);
   }
 
   paintGreetings(username) {
@@ -117,16 +124,27 @@ function onLoginSubmit(event) {
   toDoList.showTodos();
 }
 
+function onLogoutSubmit(event) {
+  event.preventDefault();
+  loginForm.deleteUsername();
+  loginForm.showForm();
+
+  toDoList.hideTodos();
+}
+
 function handleTodoSubmit(event) {
   event.preventDefault();
   toDoList.addTodo();
 }
 
+loginForm.loginForm.addEventListener("submit", onLoginSubmit);
+loginForm.logoutForm.addEventListener("submit", onLogoutSubmit);
+
 if (savedUsername === null) {
   loginForm.showForm();
   toDoList.hideTodos();
-  loginForm.form.addEventListener("submit", onLoginSubmit);
 } else {
+  loginForm.hideForm();
   loginForm.paintGreetings(savedUsername);
   toDoList.showTodos();
 }
